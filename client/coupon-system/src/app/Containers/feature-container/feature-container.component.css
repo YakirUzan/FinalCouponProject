@@ -1,0 +1,27 @@
+.feature {
+    margin: auto;
+    padding: 10px;
+    width: 1000px;
+    background-color: #00005c;
+}
+
+.feature table {
+    width: 100%;
+}
+
+.feature h1, h3 {
+    color: white;
+}
+
+.feature .refresh { 
+    transform: translateY(65%); 
+    color: white; 
+}
+
+.feature .refresh button {
+    border: transparent; 
+    background: transparent; 
+    cursor: pointer;
+    outline: none;
+    color: white; 
+}

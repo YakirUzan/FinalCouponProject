@@ -1,0 +1,52 @@
+.footerblurb {
+    margin: auto;
+    width: 1000px;
+    padding: 10px;
+    background: white;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.column {
+    float: left;
+    width: 250px;
+    padding: 0px 41.6px;
+}
+
+.column .yellow {
+    background-color: #f39c12;
+    border-radius: 5px;
+}
+
+.column .green {
+    background-color: #00a65a;
+    border-radius: 5px;
+}
+
+.column .red {
+    background-color: #dd4b39;
+    border-radius: 5px;
+}
+
+.box {
+    padding: 0px 16px;
+    color: white;
+    font-size: 20px;
+    height: 120px;
+    cursor: default;
+}
+
+.box .box-content {
+    width: 170px;
+}
+
+.box img {
+    height: 80px;
+    width: 80px;
+}
+
+.box:hover img {
+    transition: 0.7s;
+    height: 100px;
+    width: 100px;
+}

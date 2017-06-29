@@ -1,0 +1,18 @@
+<div class="footerblurb">
+  <div class="column" *ngFor="let footerItem of footerItems">
+    <div [class]="footerItem.color">
+      <table class="box">
+        <tr>
+          <td class="box-content">
+            <h2>{{footerItem.number}}</h2>
+            <p>{{footerItem.name}}</p>
+          </td>
+          <td>
+            <img [src]="footerItem.imageUrl" [alt]="footerItem.imageAlt">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="clr"></div>
+</div>

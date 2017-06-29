@@ -1,0 +1,55 @@
+<div class="page">
+
+  <login [visible]="isGuest" (loginSuccessed)="onLoginSuccessed($event)"></login>
+
+  <div *ngIf="!isGuest">
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <h1>
+            <p-lightbox type="content">
+              <a class="group" href="#">
+              <span style="color: darkblue">Coupon</span><span style="color: #d3d3f9">System</span>
+            </a>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/NRv1TySSa-8" frameborder="0" allowfullscreen></iframe>
+            </p-lightbox>
+          </h1>
+        </div>
+        <div class="top-nav">
+          <ul>
+            <li><span>About</span></li>
+            <li><span>Contact</span></li>
+            <li><span>FAQ</span></li>
+            <li><span>Help</span></li>
+          </ul>
+        </div>
+        <div class="clr"></div>
+      </div>
+    </header>
+
+    <feature-container (updated)="onUpdated()"></feature-container>
+
+    <div class="content">
+
+      <menu-container (logoutClicked)="onLogoutClicked()"></menu-container>
+
+      <main class="content-bar">
+        <div class="widget">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+
+      <div class="clr"></div>
+    </div>
+
+    <footer-container></footer-container>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>&copy; Copyright Yakir Uzan 2017</p>
+      </div>
+    </footer>
+
+    <img src="assets/Images/ic_up.png" alt="up" class="goToTop" (click)="goToTop()" />
+  </div>
+</div>

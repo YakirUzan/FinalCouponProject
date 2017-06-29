@@ -1,0 +1,7 @@
+<nav class="side-bar">
+  <div class="widget">
+    <ul>
+      <li *ngFor="let menuItem of menuItems"><a [routerLink]="menuItem.url" (click)="onMenuItemClick(menuItem)"><b [class]="getMenuItemClass(menuItem)">{{menuItem.name}}</b></a></li>
+    </ul>
+  </div>
+</nav>
