@@ -1,0 +1,11 @@
+<p-growl [value]="msgs"></p-growl>
+<div class="query-box">
+    <h1>Create Customer</h1>
+    <input type="text" maxlength="50" pInputText placeholder="Name:" pTooltip="Enter Customer Name" tooltipEvent="focus" [(ngModel)]="customerName"
+        (keypress)="onKeyPressed($event)" />
+    <br><br>
+    <input type="text" maxlength="50" pPassword placeholder="Password:" [promptLabel]="null" pTooltip="Enter Customer Password" tooltipEvent="focus"
+        [(ngModel)]="customerPassword" (keypress)="onKeyPressed($event)" />
+    <br><br>
+    <button pButton type="button" label="Create" (click)="createCustomer()"></button>
+</div>

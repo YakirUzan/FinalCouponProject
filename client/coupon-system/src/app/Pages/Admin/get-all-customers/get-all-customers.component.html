@@ -1,0 +1,84 @@
+<p-growl [value]="msgs"></p-growl>
+<p-dialog *ngFor="let dialog of dialogs" header="Customer" [(visible)]="dialog.display">
+    <b>ID:</b> {{dialog.customer.id}} 
+    <br>
+    <b>Name:</b> {{dialog.customer.custName}} 
+    <br>
+    <b>Password:</b> {{dialog.customer.password}}
+    <br>
+    <b>Coupons:</b> {{dialog.customer.coupons.length}}
+</p-dialog>
+<p-splitButton label="Download" icon="fa fa-download" (onClick)="downloadThisResults()" [model]="items"></p-splitButton>
+<div class="data-table">
+  <h1>Customers - {{customers.length}}</h1>
+  <div class="search">
+    <input type="text" maxlength="50" pInputText placeholder="Search..." pTooltip="Enter Search Filter" tooltipEvent="focus" [(ngModel)]="filterValue"/>
+    <br />
+    <b [hidden]="isFilterValueEmpty()">{{(customersPerPage | filter: filterValue).length}}  Results</b>
+  </div>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>
+          <span>S / H</span>
+        </th>
+        <th (click)="onOrderChanged('id')">
+          <span>ID&nbsp;&nbsp;<i [class]="getOrderIcon('id')"></i></span>
+        </th>
+        <th (click)="onOrderChanged('custName')">
+          <span>Name&nbsp;&nbsp;<i [class]="getOrderIcon('custName')"></i></span>
+        </th>
+        <th (click)="onOrderChanged('password')">
+          <span>Password&nbsp;&nbsp;<i [class]="getOrderIcon('password')"></i></span>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let customer of customersPerPage | filter: filterValue | orderBy: order">
+      <tr>
+        <td (click)="setActiveCustomer(customer)">
+          <span [class]="getCustomerIsActiveIcon(customer)"></span>
+        </td>
+        <td (click)="onCustomerClicked(customer)">
+          <span>{{customer.id}}</span>
+        </td>
+        <td (click)="onCustomerClicked(customer)">
+          <span>{{customer.custName}}</span>
+        </td>
+        <td (click)="onCustomerClicked(customer)">
+          <span>{{customer.password}}</span>
+        </td>
+      </tr>
+      <tr [hidden]="!isActiveCustomer(customer)">
+        <td colspan="4">
+          <h3>Coupons - {{customer.coupons.length}}</h3>
+          <table [hidden]="!haveCoupons(customer)">
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                Title
+              </th>
+              <th>
+                Price
+              </th>
+            </tr>
+            <tr *ngFor="let coupon of customer.coupons">
+              <td>
+                {{coupon.id}}
+              </td>
+              <td>
+                {{coupon.title}}
+              </td>
+              <td>
+                {{coupon.price}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p-paginator rows="10" [totalRecords]="customers.length" [rowsPerPageOptions]="[10, 15, 20, 'All']" (onPageChange)="onPageChanged($event)"></p-paginator>

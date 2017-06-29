@@ -1,0 +1,14 @@
+<p-growl [value]="msgs"></p-growl>
+<div class="query-box">
+    <h1>Create Company</h1>
+    <input type="text" maxlength="50" pInputText placeholder="Name:" pTooltip="Enter Company Name" tooltipEvent="focus" [(ngModel)]="companyName"
+        (keypress)="onKeyPressed($event)" />
+    <br><br>
+    <input type="text" maxlength="50" pInputText placeholder="Email:" pTooltip="Enter Company Email" tooltipEvent="focus" [(ngModel)]="companyEmail"
+        (keypress)="onKeyPressed($event)" />
+    <br><br>
+    <input type="text" maxlength="50" pPassword placeholder="Password:" [promptLabel]="null" pTooltip="Enter Company Password" tooltipEvent="focus"
+        [(ngModel)]="companyPassword" (keypress)="onKeyPressed($event)" />
+    <br><br>
+    <button pButton type="button" label="Create" (click)="createCompany()"></button>
+</div>

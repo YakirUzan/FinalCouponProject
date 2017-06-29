@@ -1,0 +1,77 @@
+<p-growl [value]="msgs"></p-growl>
+<p-overlayPanel #image>
+  <img [src]="imageSelected" width="100px" height="100px" />
+</p-overlayPanel>
+<p-dialog [header]="displayCoupon?.title" [visible]="displayCoupon !== null" [modal]="true" [positionLeft]="50" [positionTop]="50" (onHide)="displayCoupon = null">
+  <img *ngIf="displayCoupon !== null" [src]="displayCoupon?.image" style="max-width: 500px; max-height: 500px" />
+</p-dialog>
+<p-dialog *ngFor="let dialog of dialogs" header="Coupon" width="500" [(visible)]="dialog.display">
+  <b>ID:</b> {{dialog.coupon.id}}
+  <br>
+  <b>Title:</b> {{dialog.coupon.title}}
+  <br>
+  <b>Start Date:</b> {{dialog.coupon.startDate}}
+  <br>
+  <b>End Date:</b> {{dialog.coupon.endDate}}
+  <br>
+  <b>Type:</b> {{dialog.coupon.type}}
+  <br>
+  <b>Price:</b> {{dialog.coupon.price}} <i class="fa fa-ils"></i>
+  <br>
+  <b>Amount:</b> {{dialog.coupon.amount}}
+  <br>
+  <b>Image:</b> <span class="fa fa-expand" style="cursor: pointer" (click)="displayCoupon = dialog.coupon" (mouseenter)="setImageSelected(dialog.coupon.image); image.show($event)" (mouseleave)="image.hide()"></span>
+  <br />
+  <p-fieldset legend="Message:" [toggleable]="true" [collapsed]="true">
+    <span *ngFor="let messageRow of getSplitMessage(dialog.coupon.message)">
+      <span>{{messageRow}}</span>
+    <br />
+    </span>
+  </p-fieldset>
+</p-dialog>
+<div class="query-box">
+    <h1>Get Company</h1>
+    <input type="number" pInputText placeholder="ID:" min="0" max="9999" pTooltip="Enter Company ID" tooltipEvent="focus" [(ngModel)]="companyID"
+        (keypress)="onKeyPressed($event)" />
+    <br><br>
+    <button pButton type="button" label="Get" (click)="getCompany()"></button>
+</div>
+<div class="data-component" *ngIf="!companyIsEmpty()">
+    <h2><i class="fa fa-key"></i> ID: <span>{{selectedCompany.id}}</span></h2>
+    <h2><i class="fa fa-user"></i> Name: <span>{{selectedCompany.compName}}</span></h2>
+    <h2><i class="fa fa-envelope"></i> Email: <span>{{selectedCompany.email}}</span></h2>
+    <h2><i class="fa fa-lock"></i> Password: <span>{{selectedCompany.password}}</span></h2>
+    <p-fieldset legend="Coupons ({{selectedCompany.coupons.length}})" [toggleable]="true" [collapsed]="true">
+        <h2 [hidden]="haveCoupons()"><i class="fa fa-exclamation-circle | error"></i>No Coupons</h2>
+        <div class="data-table" [hidden]="!haveCoupons()">
+            <table>
+                <thead>
+                    <tr>
+                        <th (click)="onOrderChanged('id')">
+                            <span>ID&nbsp;&nbsp;<i [class]="getOrderIcon('id')"></i></span>
+                        </th>
+                        <th (click)="onOrderChanged('title')">
+                            <span>Title&nbsp;&nbsp;<i [class]="getOrderIcon('title')"></i></span>
+                        </th>
+                        <th (click)="onOrderChanged('price')">
+                            <span>Price&nbsp;&nbsp;<i [class]="getOrderIcon('price')"></i></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let coupon of selectedCompany.coupons | orderBy: order" (click)="onCouponClicked(coupon)">
+                    <tr>
+                        <td>
+                            {{coupon.id}}
+                        </td>
+                        <td>
+                            {{coupon.title}}
+                        </td>
+                        <td>
+                            {{coupon.price}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </p-fieldset>
+</div>

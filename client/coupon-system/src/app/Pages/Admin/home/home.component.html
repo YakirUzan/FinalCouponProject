@@ -1,0 +1,16 @@
+<table style="width: 100%">
+    <tr>
+        <td style="width: 50%">
+            <p-chart type="pie" height="300px" [options]="options" [data]="pieData"></p-chart>
+        </td>
+        <td style="width: 50%">
+            <p-chart type="line" height="300px" [options]="options" [data]="lineData"></p-chart>    
+        </td>
+    </tr>
+    <br>
+    <tr>
+        <td colspan="2" style="width: 100%">
+            <p-chart type="bar" [options]="options" [data]="barData"></p-chart>
+        </td>
+    </tr>
+</table>
