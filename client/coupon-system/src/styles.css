@@ -1,0 +1,307 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: #eee;
+    font: normal 12px/2.0em Sans-Serif;
+}
+
+.goToTop {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+	border-radius: 25px;
+    cursor: pointer;
+    margin: 10px;
+    opacity: 0.6;
+    display: none;
+    background-color:blue;
+}
+
+.goToTop:hover {
+    background-color:darkblue;
+}
+
+.ui-tabmenu-nav {
+    border: none !important;
+}
+
+.ui-tabmenuitem {
+    width: 110px;
+}
+
+.ui-menuitem-link {
+    width: 100%
+}
+
+.ui-dialog-content {
+    font: normal 12px/2.0em Sans-Serif;
+}
+
+.login input {
+    width: 100%; 
+    padding: 10px; 
+    font-size: medium !important;
+}
+
+.login .ui-dropdown {
+    width: 100% !important;
+    padding: 3px !important;
+    font-size: medium !important;
+}
+
+.query-box h1 {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    cursor: default;
+    color: rgb(13, 0, 191);
+}
+
+.query-box input, textarea {
+    width: 100% !important;
+    padding: 10px !important;
+    font-size: medium !important;
+    border-radius: 3px !important;
+}
+
+.query-box .datepicker {
+    width: 97.2%;
+}
+
+.query-box input[type = 'file'] {
+    width: calc(100% - 22px) !important;
+    border: 1px solid lightgray;
+    color: transparent;
+    cursor: pointer;
+}
+
+.query-box input[type = 'file']::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.query-box input[type = 'file']::before {
+  content: 'Image:';
+  color: dimgray;
+}
+
+.query-box .refresh {
+    width: 30px; 
+    float: right; 
+    border: transparent; 
+    background: transparent; 
+    cursor: pointer;
+}
+
+.query-box .ui-dropdown {
+    width: 100% !important;
+    padding: 3px !important;
+    font-size: medium !important;
+}
+
+.query-box input:hover {
+	background-color: #f0f0f0 !important;
+    transition: 0.3s !important;
+}
+
+.query-box textarea:hover {
+	background-color: #f0f0f0 !important;
+    transition: 0.3s !important;
+}
+
+.query-box button {
+    width: 100%;
+    padding: 5px;
+    font-size: medium;
+}
+
+.data-table table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: auto;
+    cursor: pointer;
+}
+
+.data-table .search {
+    width: 100%;
+    text-align: center;
+}
+
+.data-table .search input {
+    width: 50%;
+    padding: 10px;
+    font-size: medium;
+}
+
+.data-table .search input:hover {
+	background-color: #f0f0f0;
+    transition: 0.3s;
+}
+
+.data-table tbody table{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: auto;
+}
+
+.data-table th {
+    padding: 10px;
+    color: white;
+    background-color: darkblue;
+    text-align: left;
+}
+
+.data-table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.data-table h1 {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    cursor: default;
+    color: rgb(13, 0, 191);
+}
+
+.data-table h3 {
+    text-align: center;
+}
+
+.data-table span {
+    display: inline-block;
+    max-width: 200px;
+    min-width: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
+}
+
+.data-table thead th:hover{
+    background-color: #00005c;
+    transition: 0.3s;
+}
+
+.data-table table tbody:hover {
+    background-color: #c2c2c2;
+    transition: 0.3s;
+}
+
+.data-table tbody:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+.data-table tbody tr td table tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+.data-table tbody tr td table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.data-component span {
+    font-weight: normal;
+}
+
+.data-component h2 i {
+    color: darkblue; 
+    width: 20px;
+}
+
+.data-component h2 .error {
+    color: red; 
+}
+
+.data-component .ui-fieldset-content {
+    font: normal 12px/2.0em Sans-Serif;
+}
+
+/* Logo */
+.logo {
+    padding: 10px;
+    width: auto;
+    float: left;
+}
+
+.logo h1 .group {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logo h1 .group:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+.header-inner {
+    margin: auto;
+    padding: 10px;
+    width: 1000px;
+    background: #fff;
+}
+
+/* Menu */
+.top-nav {
+    float: right;
+}
+
+.top-nav ul {
+    list-style: none;
+}
+
+.top-nav ul li {
+    float: left;
+}
+
+.top-nav ul li span {
+    display: block;
+    padding: 8px 16px;
+    color: blue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.top-nav ul li span:hover {
+    color: #d3d3f9;
+}
+
+/* Content */
+.content {
+    margin: auto;
+    padding-bottom: 10px;
+    width: 1020px;
+    background: #fff;
+}
+
+.content .content-bar {
+    float: right;
+    width: 820px;
+}
+
+.content .content-bar .widget {
+    padding: 10px;
+}
+
+/* Footer */
+.footer-inner {
+    margin: auto;
+    text-align: center;
+    padding: 12px;
+    width: 1000px;
+}
+
+.footer a {
+    color: blue;
+    text-decoration: none;
+}
+
+/* Clear both sides to assist with div alignment  */
+.clr {
+    clear: both;
+}
