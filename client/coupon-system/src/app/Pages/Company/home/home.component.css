@@ -1,0 +1,13 @@
+.couponTitle {
+    text-align: center;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
+}
+
+.couponImage {
+    cursor: pointer;
+}

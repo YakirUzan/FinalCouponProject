@@ -1,0 +1,5 @@
+<div [ngSwitch]="type">
+  <admin-home *ngSwitchCase="'ADMIN'"></admin-home>
+  <company-home *ngSwitchCase="'COMPANY'"></company-home>
+  <customer-home *ngSwitchCase="'CUSTOMER'"></customer-home>
+</div>

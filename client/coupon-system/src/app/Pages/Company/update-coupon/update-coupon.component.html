@@ -1,0 +1,23 @@
+<p-growl [value]="msgs"></p-growl>
+<div class="query-box">
+  <h1>Update Coupon</h1>
+  <input type="number" pInputText placeholder="ID:" min="0" max="9999" pTooltip="Enter Coupon ID" tooltipEvent="focus" [(ngModel)]="couponID"
+    (keypress)="onKeyPressed($event)" />
+  <br><br>
+  <material-datepicker [(date)]="couponEndDate" placeholder="End  Date:" dateFormat="DD-MM-YYYY"></material-datepicker>
+  <br /><br />
+  <table style="width: 100%">
+    <tr>
+      <td style="width: 50%">
+        <input type="number" pInputText placeholder="Amount:" min="0" max="1000000" pTooltip="Enter Coupon Amount" tooltipEvent="focus"
+          [(ngModel)]="couponAmount" (keypress)="onKeyPressed($event)" />
+      </td>
+      <td style="width: 50%">
+        <input type="number" pInputText placeholder="Price:" min="0" max="1000000" pTooltip="Enter Coupon Price" tooltipEvent="focus"
+          [(ngModel)]="couponPrice" (keypress)="onKeyPressed($event)" />
+      </td>
+    </tr>
+  </table>
+  <br />
+  <button pButton type="button" label="Update" (click)="updateCoupon()"></button>
+</div>

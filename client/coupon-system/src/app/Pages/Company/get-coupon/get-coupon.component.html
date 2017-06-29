@@ -1,0 +1,27 @@
+<p-growl [value]="msgs"></p-growl>
+<p-overlayPanel #image>
+  <img [src]="getImage()" width="100px" height="100px" />
+</p-overlayPanel>
+<p-dialog [header]="displayCoupon?.title" [visible]="displayCoupon !== null" [modal]="true" [positionLeft]="50" [positionTop]="50" (onHide)="displayCoupon = null">
+  <img *ngIf="displayCoupon !== null" [src]="displayCoupon?.image" style="max-width: 500px; max-height: 500px" />
+</p-dialog>
+<div class="query-box">
+  <h1>Get Coupon</h1>
+  <input type="number" pInputText placeholder="ID:" min="0" max="9999" pTooltip="Enter Coupon ID" tooltipEvent="focus" [(ngModel)]="couponID"
+    (keypress)="onKeyPressed($event)" />
+  <br><br>
+  <button pButton type="button" label="Get" (click)="getCoupon()"></button>
+</div>
+<div class="data-component" *ngIf="!couponIsEmpty()">
+  <h2><i class="fa fa-key"></i> ID: <span>{{selectedCoupon.id}}</span></h2>
+  <h2><i class="fa fa-tag"></i> Title: <span>{{selectedCoupon.title}}</span></h2>
+  <h2><i class="fa fa-globe"></i> Type: <span>{{selectedCoupon.type}}</span></h2>
+  <h2><i class="fa fa-calendar"></i> Start Date: <span>{{selectedCoupon.startDate}}</span></h2>
+  <h2><i class="fa fa-calendar"></i> End Date: <span>{{selectedCoupon.endDate}}</span></h2>
+  <h2><i class="fa fa-pie-chart"></i> Amount: <span>{{selectedCoupon.amount}}</span></h2>
+  <h2><i class="fa fa-ils"></i> Price: <span>{{selectedCoupon.price}}</span></h2>
+  <h2><i class="fa fa-picture-o"></i> Image: <span class="fa fa-expand" style="cursor: pointer" (click)="displayCoupon = selectedCoupon" (mouseenter)="image.show($event)" (mouseleave)="image.hide()"></span></h2>
+  <p-fieldset legend="Message:" [toggleable]="true" [collapsed]="true">
+    <h2><span>{{selectedCoupon.message}}</span></h2>
+  </p-fieldset>
+</div>

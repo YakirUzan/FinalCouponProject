@@ -1,0 +1,8 @@
+<p-growl [value]="msgs"></p-growl>
+<div class="query-box">
+  <h1>Remove Coupon</h1>
+  <input type="number" pInputText placeholder="ID:" min="0" max="9999" pTooltip="Enter Coupon ID" tooltipEvent="focus" [(ngModel)]="couponID"
+    (keypress)="onKeyPressed($event)" />
+  <br><br>
+  <button pButton type="button" label="Remove" (click)="removeCoupon()"></button>
+</div>

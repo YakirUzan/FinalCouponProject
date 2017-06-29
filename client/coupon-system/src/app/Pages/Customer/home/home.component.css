@@ -1,0 +1,37 @@
+.couponTitle {
+    text-align: center;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
+}
+
+.container:hover .purchase {
+    display: block;
+}
+
+.container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.purchase {
+  width: 100%;
+  height: 23px;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  top: 80px;
+  color: rgb(84, 100, 105);
+  background-color: rgba(230, 230, 250, 0.57);
+  display: none;
+  cursor: pointer;
+}
+
+.purchase:hover {
+  color: red;
+  font-weight: bold;
+}

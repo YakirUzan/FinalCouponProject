@@ -1,0 +1,52 @@
+<p-growl [value]="msgs"></p-growl>
+<div class="query-box">
+  <h1>Create Coupon</h1>
+  <input type="text" maxlength="50" pInputText placeholder="Title:" pTooltip="Enter Coupon Title" tooltipEvent="focus" [(ngModel)]="couponTitle"
+    (keypress)="onKeyPressed($event)" />
+  <br /><br />
+  <p-dropdown [options]="types" placeholder="Type:" [(ngModel)]="couponType"></p-dropdown>
+  <br /><br />
+  <material-datepicker [(date)]="couponStartDate" placeholder="Start Date:" dateFormat="DD-MM-YYYY"></material-datepicker>
+  <br /><br />
+  <material-datepicker [(date)]="couponEndDate" placeholder="End  Date:" dateFormat="DD-MM-YYYY"></material-datepicker>
+  <br /><br />
+  <table style="width: 100%">
+    <tr>
+      <td style="width: 50%">
+        <input type="number" pInputText placeholder="Amount:" min="0" max="1000000" pTooltip="Enter Coupon Amount" tooltipEvent="focus"
+          [(ngModel)]="couponAmount" (keypress)="onKeyPressed($event)" />
+      </td>
+      <td style="width: 50%">
+        <input type="number" pInputText placeholder="Price:" min="0" max="1000000" pTooltip="Enter Coupon Price" tooltipEvent="focus"
+          [(ngModel)]="couponPrice" (keypress)="onKeyPressed($event)" />
+      </td>
+    </tr>
+  </table>
+  <br>
+  <textarea pInputTextarea maxlength="500" autoResize="autoResize" placeholder="Message:" pTooltip="Enter Coupon Message" tooltipEvent="focus"
+    [(ngModel)]="couponMessage"></textarea>
+  <br /><br />
+  <div [hidden]="image.content">
+    <input #imageSelected type="file" accept="image/*" class="custom-file-input" title="&nbsp;" (change)="onFileUploaded($event)"
+    />
+    <br />
+  </div>
+  <div *ngIf="image.content">
+    <table>
+      <tr>
+        <td>
+          <img [src]="image.content" width="50px" height="50px" />
+        </td>
+        <td style="width: 100%">
+          <b>Name: </b>{{image.name}}<br>
+          <b>Size: </b>{{image.size}}
+        </td>
+        <td>
+          <button class="refresh" (click)="resetImageSelected()"><i class="fa fa-refresh"></i></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <button pButton type="button" label="Create" (click)="createCoupon()"></button>
+</div>

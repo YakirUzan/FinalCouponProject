@@ -1,0 +1,19 @@
+<p-growl [value]="msgs"></p-growl>
+<p-dialog [(visible)]="visible" [draggable]="false" [resizable]="false" [closable]="false" [modal]="true" [width]="400">
+    <p-header>
+      <b>Login</b>
+    </p-header>
+    <form (ngSubmit)="onSubmit()">
+      <div class="login">
+        <input pInputText type="text" maxlength="50" placeholder="Name:" name="name" [(ngModel)]="user.name" />
+        <br /><br />
+        <input pInputText type="password" maxlength="50" placeholder="Password:" name="password" [(ngModel)]="user.password" />
+        <br /><br />
+        <p-dropdown [options]="types" name="type" (onChange)="user.type = $event.value"></p-dropdown>
+        <br /><br /><br /><br /><br />
+      </div>
+      <div style="padding: 10px; font-size: medium; text-align: center">
+        <button pButton type="submit" label="Login" style="width: 100%"></button>
+      </div>
+    </form>
+  </p-dialog>

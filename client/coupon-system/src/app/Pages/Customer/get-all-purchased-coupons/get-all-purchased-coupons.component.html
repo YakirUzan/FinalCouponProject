@@ -1,0 +1,108 @@
+<p-growl [value]="msgs"></p-growl>
+<p-overlayPanel #message>
+  <span *ngFor="let messageRow of messageSelected">
+    <span>{{messageRow}}</span>
+  <br />
+  </span>
+</p-overlayPanel>
+<p-overlayPanel #image>
+  <img [src]="imageSelected" width="100px" height="100px" />
+</p-overlayPanel>
+<p-dialog [header]="displayCoupon?.title" [visible]="displayCoupon !== null" [modal]="true" [positionLeft]="50" [positionTop]="50" (onHide)="displayCoupon = null">
+  <img *ngIf="displayCoupon !== null" [src]="displayCoupon?.image" style="max-width: 500px; max-height: 500px" />
+</p-dialog>
+<p-dialog *ngFor="let dialog of dialogs" header="Coupon" width="500" [(visible)]="dialog.display">
+  <b>ID:</b> {{dialog.coupon.id}}
+  <br>
+  <b>Title:</b> {{dialog.coupon.title}}
+  <br>
+  <b>Type:</b> {{dialog.coupon.type}}
+  <br>
+  <b>Start Date:</b> {{dialog.coupon.startDate}}
+  <br>
+  <b>End Date:</b> {{dialog.coupon.endDate}}
+  <br>
+  <b>Amount:</b> {{dialog.coupon.amount}}
+  <br>
+  <b>Price:</b> {{dialog.coupon.price}}
+  <br>
+  <b>Image:</b> <span class="fa fa-expand" style="cursor: pointer" (click)="displayCoupon = dialog.coupon" (mouseenter)="setImageSelected(dialog.coupon.image); image.show($event)" (mouseleave)="image.hide()"></span>
+  <br>
+  <p-fieldset legend="Message:" [toggleable]="true" [collapsed]="true">
+    <span *ngFor="let messageRow of getSplitMessage(dialog.coupon.message)">
+      <span>{{messageRow}}</span>
+      <br />
+    </span>
+  </p-fieldset>
+</p-dialog>
+<p-splitButton label="Download" icon="fa fa-download" (onClick)="downloadThisResults()" [model]="items"></p-splitButton>
+<div class="data-table">
+  <h1>Coupons - {{coupons.length}}</h1>
+  <div class="search">
+    <input type="text" maxlength="50" pInputText placeholder="Search..." pTooltip="Enter Search Filter" tooltipEvent="focus"
+      [(ngModel)]="filterValue" />
+    <br />
+    <b [hidden]="isFilterValueEmpty()">{{(couponsPerPage | filter: filterValue).length}}  Results</b>
+  </div>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th (click)="onOrderChanged('id')">
+          <span>ID&nbsp;&nbsp;<i [class]="getOrderIcon('id')"></i></span>
+        </th>
+        <th (click)="onOrderChanged('title')">
+          <span>Title&nbsp;&nbsp;<i [class]="getOrderIcon('title')"></i></span>
+        </th>
+        <th (click)="onOrderChanged('type')">
+          <span>Type&nbsp;&nbsp;<i [class]="getOrderIcon('type')"></i></span>
+        </th>
+        <th (click)="onOrderChanged('startDate')">
+          <span>Start Date&nbsp;&nbsp;<i [class]="getOrderIcon('startDate')"></i></span>
+        </th>
+        <th (click)="onOrderChanged('endDate')">
+          <span>End Date&nbsp;&nbsp;<i [class]="getOrderIcon('endDate')"></i></span>
+        </th>
+        <th (click)="onOrderChanged('amount')">
+          <span>Amount&nbsp;&nbsp;<i [class]="getOrderIcon('amount')"></i></span>
+        </th>
+        <th (click)="onOrderChanged('price')">
+          <span>Price&nbsp;&nbsp;<i [class]="getOrderIcon('price')"></i></span>
+        </th>
+        <th>
+          <span>Image</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let coupon of couponsPerPage | filter: filterValue | orderBy: order">
+      <tr>
+        <td (click)="onCouponClicked(coupon)" (mouseenter)="setMessageSelected(coupon.message); message.show($event)" (mouseleave)="message.hide()">
+          <span>{{coupon.id}}</span>
+        </td>
+        <td (click)="onCouponClicked(coupon)" (mouseenter)="setMessageSelected(coupon.message); message.show($event)" (mouseleave)="message.hide()">
+          <span>{{coupon.title}}</span>
+        </td>
+        <td (click)="onCouponClicked(coupon)">
+          <span>{{coupon.type}}</span>
+        </td>
+        <td (click)="onCouponClicked(coupon)">
+          <span>{{coupon.startDate}}</span>
+        </td>
+        <td (click)="onCouponClicked(coupon)">
+          <span>{{coupon.endDate}}</span>
+        </td>
+        <td (click)="onCouponClicked(coupon)">
+          <span>{{coupon.amount}}</span>
+        </td>
+        <td (click)="onCouponClicked(coupon)">
+          <span>{{coupon.price}}</span>
+        </td>
+        <td (click)="onCouponClicked(coupon)" (mouseenter)="setImageSelected(coupon.image); image.show($event)" (mouseleave)="image.hide()">
+          <span class="fa fa-picture-o"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p-paginator rows="10" [totalRecords]="coupons.length" [rowsPerPageOptions]="[10, 15, 20, 'All']"
+  (onPageChange)="onPageChanged($event)"></p-paginator>
